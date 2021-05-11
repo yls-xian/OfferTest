@@ -43,17 +43,24 @@ class Solution455 {
          *执行用时：9 ms, 在所有 Java 提交中击败了21.02%的用户
          * 内存消耗：38.9 MB, 在所有 Java 提交中击败了95.79%的用户
          */
+        //首先将两个数组排序
         Arrays.sort(g);
         Arrays.sort(s);
+        //初始化可以满足的孩子个数
         int res = 0;
+        //定义双指针，分别指向孩子和饼干
         int child=0,cookie=0;
+        //获得孩子的个数和饼干的个数
         int num_c = g.length;
         int num_b = s.length;
+        //当指向孩子的指针小于孩子的个数，同时指向饼干的指针小于饼干的个数时进行循环操作
         while(child < num_c && cookie < num_b ){
+            //一旦饼干的体积达到了孩子的满足度，继续循环下一个孩子
             if(s[cookie]>=g[child]){
                 res++;
                 child++;
             }
+            //饼干体积按照大小继续循环
             cookie++;
         }
         return res;
